@@ -1,2 +1,2 @@
-# training-environment-slurmsimulator-app
-training-environment-codeserver-app
+# NeSI training environment slurm-simulator app
+
