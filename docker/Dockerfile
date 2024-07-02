@@ -14,7 +14,13 @@ RUN dnf upgrade -y && dnf install -y \
     # GitLab HPC Driver dependencies
     libconfig-devel spdlog-devel soci-sqlite3-devel boost-devel \
     gtest-devel gmock-devel \
+    openldap openldap-clients openldap-servers \
     doxygen graphviz python python-pip
+
+RUN yum install -y rsync 
+
+#RUN localedef -i en_NZ -c -f UTF-8 -A /usr/share/locale/locale.alias en_NZ.UTF-8 
+ENV LANG en_NZ.utf8
 
 # Compile slurm with multiple-slurmd option
 RUN wget -q "https://download.schedmd.com/slurm/slurm-24.05-latest.tar.bz2" && \
@@ -42,3 +48,6 @@ COPY docker-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["su", "--login", "ca"]
+
+# install jupyterlab
+RUN pip3 --no-cache-dir install jupyterlab
