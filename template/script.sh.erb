@@ -15,11 +15,5 @@ echo "TIMING - Starting jupyter at: $(date)"
 
 set -x
 
-# copy data files
-# note: this will not overwrite files if they already exist, so changes won't
-#       be lost when restarting the app
-rsync --ignore-existing -avz /var/lib/puzzles_da/ ~/puzzles_da/
-rsync --ignore-existing -avz /var/lib/shell4b_data/ ~/shell4b_data/
-
 # launch JupyterLab
 jupyter lab --config="/ood/ondemand_config.py"
